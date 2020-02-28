@@ -26,6 +26,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 mp.start();
+                mp.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mp) {
+                        Log.i("OnCompletionListener", "Play song completed");
+                        Toast.makeText(getApplicationContext(),"I'm done",Toast.LENGTH_SHORT).show();
+                    }
+                });
             }
         });
         pauseButton.setOnClickListener(new View.OnClickListener() {
@@ -35,12 +42,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        mp.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-            @Override
-            public void onCompletion(MediaPlayer mp) {
-                Log.i("OnCompletionListener", "Play song completed");
-                Toast.makeText(getApplicationContext(),"I'm done",Toast.LENGTH_SHORT).show();
-            }
-        });
+
     }
 }
